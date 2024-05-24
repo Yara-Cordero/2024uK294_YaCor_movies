@@ -1,16 +1,21 @@
 import React from 'react'
-import advancedFormat from '@mui/x-date-picker'
 
-type MovieProp = {
-    id : number
+export type MovieProps = {
+    id : string
     title : string
-    director : string
-    
+    director ?: string
+    "Release Date" : string
+       
 }
 
-function Movie() {
+const Movie = ({id, title, director, "Release Date": releaseDate} : MovieProps)=> {
   return (
-    <div>Movie</div>
+    <>
+      <div>{id}</div>
+      <div>{title}</div>
+      {director && <div>{director}</div>}
+      <div>{releaseDate}</div>
+    </>
   )
 }
 

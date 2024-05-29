@@ -1,9 +1,13 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0 ;
   text-align: center;
+  width: 100%;
 }
+
+body {
+  margin-top: 64px; /* Adjust this value based on the height of your AppBar */
+}
+
 
 .logo {
   height: 6em;
@@ -39,4 +43,69 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.listElement {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center ;
+  gap: 20px;
+}
+
+.listElement h2 {
+margin: 0 0 5px;
+}
+
+.movieBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+  padding:20px;
+  padding-right: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0);
+  background-color: #f2eeee; /* Light background color */
+  border-radius: 10px; /* Rounded corners */
+  margin: 15px;
+  color: black;
+  text-align: left;
+}
+
+.navbar {
+  width: 100%;
+  background-color: bisque;
+  margin-bottom: 2rem; /* Add margin at the bottom to separate it from the rest of the content */
+}
+
+.navbar .MuiToolbar-root {
+  justify-content: space-between; /* Space items out evenly */
+}
+
+
+.buttonContainer {
+  display: flex;
+  gap: 10px; /* Adjust this value as needed */
+}
+
+.formElement {
+  display: flex;
+  justify-content: center;
+}
+
+.formBox{
+  justify-content: center;
+  text-align: center;
+  margin: 20px;
+  gap:16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding:20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0);
+  background-color: #f2eeee; /* Light background color */
+  border-radius: 10px; /* Rounded corners */
+  color: black;
+  text-align: left;
 }

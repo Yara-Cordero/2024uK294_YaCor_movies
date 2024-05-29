@@ -1,20 +1,20 @@
 import React from 'react'
 
-export type MovieProps = {
+
+export type MovieProp = {
     id : string
-    title : string
-    director ?: string
-    "Release Date" : string
-       
+    Title : string
+    Director ?: string
+    releaseDate : string
 }
 
-const Movie = ({id, title, director, "Release Date": releaseDate} : MovieProps)=> {
+const Movie = (props: MovieProp)=> {
   return (
     <>
-      <div>{id}</div>
-      <div>{title}</div>
-      {director && <div>{director}</div>}
-      <div>{releaseDate}</div>
+      <div>{props.id}</div>
+      <div>{props.Title}</div>
+      {props.Director && <div>{props.Director}</div>}
+      <div>{props.releaseDate}</div>
     </>
   )
 }

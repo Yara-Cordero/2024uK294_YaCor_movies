@@ -1,23 +1,40 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../Organism/NavBar'
+import MovieService from '../service/MovieService'
+import { useNavigate, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
-import MovieService from '../service/MovieService';
-import { useNavigate } from 'react-router-dom';
-import { TextField } from '@mui/material';
+import { MovieType } from './HomePage'
+import { Button, TextField } from '@mui/material';
 
-function AddMoviePage() {
+const UpdateMoviePage =() => {
+  const { id } =  useParams();
   const navigate = useNavigate();
-  const [movies, setMovies] = useState({
+  const [initialValues, setInitialValues] = useState({
     Title: '',
     Director: '',
     'Release Date': ''
   });
 
+
+  useEffect(() => {
+    MovieService().getMovieById(id)
+      .then(data => {
+        setInitialValues({
+          Title: data.Title,
+          Director: data.Director,
+          'Release Date': data['Release Date']
+        });
+      })
+      .catch((error) => {
+        console.error("error fetching data.", error)
+      });
+  }, [id]);
+
   const formik = useFormik({
-    initialValues: movies,
+    initialValues: initialValues,
     enableReinitialize: true,
     onSubmit: (values) => {
-      MovieService().addMovie( values.Title, values.Director, values['Release Date'])
+      MovieService().updateMovie(id, values.Title, values.Director, values['Release Date'])
         .then(() => {
           navigate('/movies');
         })
@@ -26,13 +43,10 @@ function AddMoviePage() {
         });
       }
   });
-  
+
   return (
     <>
-      <NavBar />
-
-      <div>AddMoviePage</div>
-
+      <NavBar></NavBar>
       <div className='formElement'>
         <form onSubmit={formik.handleSubmit}>
           <div className='formBox'>
@@ -75,8 +89,7 @@ function AddMoviePage() {
         </form> 
       </div>
     </>
-    
   )
 }
 
-export default AddMoviePage
+export default UpdateMoviePage

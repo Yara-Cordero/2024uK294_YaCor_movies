@@ -15,7 +15,7 @@ function NavBar() {
         <AppBar position="fixed" className='navbar' sx={{backgroundColor: "#404040"}}>
             <Toolbar>
                 <Button onClick={() => navigate("/movies/create")}>Create</Button>
-                <Typography sx={{ flexGrow: 5}} onClick={() => navigate("/movies")}>Home</Typography>
+                <Button onClick={() => navigate("/movies")}>Home</Button>
                 <Button onClick={handleLogout}>Logout</Button>
             </Toolbar>
         </AppBar>

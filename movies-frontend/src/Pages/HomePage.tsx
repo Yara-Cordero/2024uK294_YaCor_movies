@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import MovieService from '../service/MovieService';
-import Movie from '../Molecule/Movie';
 import { Button } from '@mui/material';
 import NavBar from '../Organism/NavBar';
 
@@ -49,7 +48,7 @@ function HomePage() {
     <>
         <NavBar />
         <div className='listElement'>
-            {movie.map((movieData, index) => (
+            {movie.map((movieData) => (
                 <div className='movieBox' key={movieData.id}>
                     <h2>{movieData.Title}</h2>
                     <div className='buttonContainer'>

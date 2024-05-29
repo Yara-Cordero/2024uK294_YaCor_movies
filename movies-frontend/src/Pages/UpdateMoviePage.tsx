@@ -1,25 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import NavBar from '../Organism/NavBar'
 import MovieService from '../service/MovieService'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { MovieType } from './HomePage'
 import { Button, TextField } from '@mui/material';
 
 const UpdateMoviePage =() => {
   const { id } =  useParams();
   const navigate = useNavigate();
-  const [initialValues, setInitialValues] = useState({
+  const [initialValues] = useState({
+    id: id!,
     Title: '',
     Director: '',
     'Release Date': ''
   });
 
+
+
   const formik = useFormik({
     initialValues: initialValues,
     enableReinitialize: true,
     onSubmit: (values) => {
-      MovieService().updateMovie(id!, values.Title, values.Director, values['Release Date'])
+      MovieService().updateMovie(values)
         .then(() => {
           navigate('/movies');
         })

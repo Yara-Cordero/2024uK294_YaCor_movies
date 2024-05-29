@@ -8,6 +8,7 @@ import { Button, TextField } from '@mui/material';
 function AddMoviePage() {
   const navigate = useNavigate();
   const [movies, setMovies] = useState({
+    id: '',
     Title: '',
     Director: '',
     'Release Date': ''
@@ -17,7 +18,7 @@ function AddMoviePage() {
     initialValues: movies,
     enableReinitialize: true,
     onSubmit: (values) => {
-      MovieService().addMovie( values.Title, values.Director, values['Release Date'])
+      MovieService().addMovie(values)
         .then(() => {
           navigate('/movies');
         })
@@ -37,6 +38,7 @@ function AddMoviePage() {
               Create
             </h3>
             <TextField 
+              required
               id='Title'
               label='Title'
               name='Title'
@@ -67,7 +69,7 @@ function AddMoviePage() {
               variant='outlined'
               size='medium'
               type='submit'
-            >Save Changes</Button>
+            >Create</Button>
           </div>
         </form> 
       </div>

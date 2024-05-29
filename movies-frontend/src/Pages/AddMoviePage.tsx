@@ -3,7 +3,7 @@ import NavBar from '../Organism/NavBar'
 import { useFormik } from 'formik';
 import MovieService from '../service/MovieService';
 import { useNavigate } from 'react-router-dom';
-import { TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 
 function AddMoviePage() {
   const navigate = useNavigate();
@@ -30,14 +30,11 @@ function AddMoviePage() {
   return (
     <>
       <NavBar />
-
-      <div>AddMoviePage</div>
-
       <div className='formElement'>
         <form onSubmit={formik.handleSubmit}>
           <div className='formBox'>
             <h3>
-              Edit Info
+              Create
             </h3>
             <TextField 
               id='Title'

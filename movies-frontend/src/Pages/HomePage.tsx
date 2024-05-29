@@ -20,8 +20,12 @@ function HomePage() {
     useEffect(() => {
         MovieService()
             .getAllMovies()
-            .then((data : MovieType[]) =>
-                setMovies(data));
+            .then((data : MovieType[]) => {
+                console.log(data)
+                setMovies(data);
+            })
+                
+            
             
     }, []);
 
@@ -55,11 +59,11 @@ function HomePage() {
                     </div>
                     {activeMovieId === movieData.id && (
                         <div>
-                        <h5>Director: {movieData.Director}</h5>
-                        <h5>Release Date: {movieData['Release Date']}</h5>
-                    </div>
+                            <h5>Director: {movieData.Director}</h5>
+                            <h5>Release Date: {movieData['Release Date']}</h5>
+                        </div>
                     )}
-                    
+
                 </div>
             ))}
             

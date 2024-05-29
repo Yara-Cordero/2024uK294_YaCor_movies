@@ -15,26 +15,11 @@ const UpdateMoviePage =() => {
     'Release Date': ''
   });
 
-
-  useEffect(() => {
-    MovieService().getMovieById(id)
-      .then(data => {
-        setInitialValues({
-          Title: data.Title,
-          Director: data.Director,
-          'Release Date': data['Release Date']
-        });
-      })
-      .catch((error) => {
-        console.error("error fetching data.", error)
-      });
-  }, [id]);
-
   const formik = useFormik({
     initialValues: initialValues,
     enableReinitialize: true,
     onSubmit: (values) => {
-      MovieService().updateMovie(id, values.Title, values.Director, values['Release Date'])
+      MovieService().updateMovie(id!, values.Title, values.Director, values['Release Date'])
         .then(() => {
           navigate('/movies');
         })

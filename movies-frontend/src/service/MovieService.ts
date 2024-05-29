@@ -37,7 +37,7 @@ const MovieService = (api: AxiosInstance = baseInstance) => ({
         try {
             const data = {title, director, releaseDate};
             const response = await api.put(`/movies/${id}`, data); 
-            console.log("Movie updated.")
+            console.log("Movie updated.", response)
             return response.data; 
         } catch (error) {
             console.error("error on update", error);
